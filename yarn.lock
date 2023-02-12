@@ -1311,6 +1311,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"gpact@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "gpact@workspace:."
+  dependencies:
+    "@types/node": ^18.7.15
+    "@typescript-eslint/eslint-plugin": ^5.36.2
+    "@typescript-eslint/parser": ^5.36.2
+    abort-controller: ^3.0.0
+    eslint: ^8.23.0
+    node-fetch: ^3.3.0
+    nodemon: ^2.0.20
+    typescript: ^4.8.2
+    vite-node: ^0.28.4
+  languageName: unknown
+  linkType: soft
+
 "graceful-fs@npm:^4.2.6":
   version: 4.2.10
   resolution: "graceful-fs@npm:4.2.10"
@@ -1573,22 +1589,6 @@ __metadata:
   checksum: 12c5021c859bd0f5248561bf139121f0358285ec545ebf48bb3d346820d5c61a4309535c7f387ed7d84361cf821e124ce346c6b7cef8ee09a67c1473b46d0fc4
   languageName: node
   linkType: hard
-
-"liyue@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "liyue@workspace:."
-  dependencies:
-    "@types/node": ^18.7.15
-    "@typescript-eslint/eslint-plugin": ^5.36.2
-    "@typescript-eslint/parser": ^5.36.2
-    abort-controller: ^3.0.0
-    eslint: ^8.23.0
-    node-fetch: ^3.3.0
-    nodemon: ^2.0.20
-    typescript: ^4.8.2
-    vite-node: ^0.28.4
-  languageName: unknown
-  linkType: soft
 
 "locate-path@npm:^6.0.0":
   version: 6.0.0
