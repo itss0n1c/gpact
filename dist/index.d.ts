@@ -1,7 +1,7 @@
 import { resources } from './resources.js';
 interface GenshinEndpoint<T extends keyof typeof resources> {
-    get all(): Promise<typeof resources[T]['encode'] extends true ? typeof resources[T]['data'][] : typeof resources[T]['data']>;
-    get(id: typeof resources[T]['key']): Promise<typeof resources[T]['data']>;
+    get all(): Promise<(typeof resources)[T]['encode'] extends true ? (typeof resources)[T]['data'][] : (typeof resources)[T]['data']>;
+    get(id: (typeof resources)[T]['key']): Promise<(typeof resources)[T]['data']>;
     images(id: string): Promise<string[]>;
 }
 export declare const artifacts: GenshinEndpoint<"artifacts">;

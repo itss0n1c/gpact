@@ -1,11 +1,12 @@
-/* eslint-disable no-unused-vars */
 import { join } from 'path';
 import { api_url, json } from './request.js';
 import { resources } from './resources.js';
 
 interface GenshinEndpoint<T extends keyof typeof resources> {
-	get all(): Promise<typeof resources[T]['encode'] extends true ? typeof resources[T]['data'][] : typeof resources[T]['data']>;
-	get(id: typeof resources[T]['key']): Promise<typeof resources[T]['data']>;
+	get all(): Promise<
+		(typeof resources)[T]['encode'] extends true ? (typeof resources)[T]['data'][] : (typeof resources)[T]['data']
+	>;
+	get(id: (typeof resources)[T]['key']): Promise<(typeof resources)[T]['data']>;
 	images(id: string): Promise<string[]>;
 }
 
@@ -13,7 +14,7 @@ async function resolve_entity<T>(type: string, id: string) {
 	const entity = await json<T>(join(type, id));
 	return {
 		id,
-		...entity
+		...entity,
 	};
 }
 
@@ -21,7 +22,10 @@ function resolve_entities<T>(type: string) {
 	return async (ids: string[]) => Promise.all(ids.map((id) => resolve_entity<T>(type, id)));
 }
 
-function create_endpoint<ResourceType extends keyof typeof resources, Resource extends typeof resources[ResourceType]>(resource_type: ResourceType) {
+function create_endpoint<
+	ResourceType extends keyof typeof resources,
+	Resource extends (typeof resources)[ResourceType],
+>(resource_type: ResourceType) {
 	const { type: _type, encode } = resources[resource_type];
 	const type = encode ? encodeURIComponent(_type) : _type;
 	const methods: GenshinEndpoint<ResourceType> = {
@@ -44,7 +48,7 @@ function create_endpoint<ResourceType extends keyof typeof resources, Resource e
 		images: async (id) => {
 			const ids = await json<string[]>(join(type, id, 'list'));
 			return ids.map((i) => new URL(join(type, id, i), api_url).toString());
-		}
+		},
 	};
 
 	return methods;

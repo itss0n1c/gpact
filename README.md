@@ -4,7 +4,7 @@
 <a href="https://www.npmjs.com/package/gpact"><img src="https://img.shields.io/npm/v/gpact?maxAge=3600" alt="npm version" /></a>
 <a href="https://www.npmjs.com/package/gpact"><img src="https://img.shields.io/npm/dt/gpact.svg?maxAge=3600" alt="npm downloads" /></a>
 
-### An api.genshin.dev wrapper for Node.JS
+### A simple library for interacting with the [fan-made Genshin Impact API](https://github.com/genshindev/api).
 
 ## Installation
 
@@ -13,6 +13,7 @@
 ```
 
 ## Usage
+Set `GPACT_API_URL` to the current API URL, See [here](https://github.com/genshindev/api).
 
 ```ts
 import { genshin } from 'gpact';

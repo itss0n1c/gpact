@@ -1,22 +1,31 @@
 import { AbortController } from 'abort-controller';
 import fetch, { RequestInit, Response } from 'node-fetch';
 
-export const api_url = 'https://api.genshin.dev';
+export const api_url = process.env.GENSHIN_API_BASE_URL;
 
-async function request(path: string, queries: Record<string, any> = {}, options: RequestInit = {}, retry_count = 0): Promise<Response> {
+async function request(
+	path: string,
+	queries: Record<string, unknown> = {},
+	options: RequestInit = {},
+	retry_count = 0,
+): Promise<Response> {
+	if (!api_url) {
+		throw new Error('GENSHIN_API_BASE_URL is not set');
+	}
+
 	const signal = new AbortController();
 	const timeout = setTimeout(() => signal.abort(), 5000);
 
 	const url = new URL(path, api_url);
-	for (const [ key, value ] of Object.entries(queries)) {
-		url.searchParams.append(key, value);
+	for (const [key, value] of Object.entries(queries)) {
+		url.searchParams.append(key, (value as string).toString());
 	}
 
-	let res;
+	let res: Response;
 	try {
 		res = await fetch(url.toString(), {
 			...options,
-			signal: signal.signal
+			signal: signal.signal,
 		});
 	} catch (e) {
 		clearTimeout(timeout);
@@ -32,7 +41,11 @@ async function request(path: string, queries: Record<string, any> = {}, options:
 	return res;
 }
 
-export async function json<T>(path: string, queries: Record<string, any> = {}, options: RequestInit = {}): Promise<T> {
+export async function json<T>(
+	path: string,
+	queries: Record<string, unknown> = {},
+	options: RequestInit = {},
+): Promise<T> {
 	const res = await request(path, queries, options);
 
 	return res.json() as Promise<T>;

@@ -11,9 +11,28 @@ type GenshinWeaponKey = 'CLAYMORE' | 'POLEARM' | 'SWORD' | 'BOW' | 'CATALYST';
 type GenshinNationName = 'Mondstadt' | 'Unknown' | 'Inazuma' | 'Liyue' | 'Sumeru' | 'Snezhnaya' | 'Outlander';
 type GenshinArchonName = 'Baal' | 'Morax' | 'Barbatos';
 type GenshinControlledEntityName = 'Inazuma Bakufu' | 'Liyue Qixing' | 'Knights of Favonius';
-type GenshinWeaponSubStat = 'ATK' | 'Attack' | 'Elemental Mastery' | '-' | 'Physical DMG Bonus' | 'HP' | 'CRIT DMG' | 'DEF' | 'CRIT Rate' | 'Energy Recharge';
-type GenshinWeaponAscensionType = 'distantant-sea' | 'dandelion' | 'aerosiderite' | 'decarabian' | 'guyun' | 'elixir' | 'boreal' | 'mask' | 'narukami';
-type GenshinFoodType = 'ATK-Boosting Dish' | 'Recovery Dish' | 'Adventurer\'s Dish' | 'DEF-Boosting Dish';
+type GenshinWeaponSubStat =
+	| 'ATK'
+	| 'Attack'
+	| 'Elemental Mastery'
+	| '-'
+	| 'Physical DMG Bonus'
+	| 'HP'
+	| 'CRIT DMG'
+	| 'DEF'
+	| 'CRIT Rate'
+	| 'Energy Recharge';
+type GenshinWeaponAscensionType =
+	| 'distantant-sea'
+	| 'dandelion'
+	| 'aerosiderite'
+	| 'decarabian'
+	| 'guyun'
+	| 'elixir'
+	| 'boreal'
+	| 'mask'
+	| 'narukami';
+type GenshinFoodType = 'ATK-Boosting Dish' | 'Recovery Dish' | "Adventurer's Dish" | 'DEF-Boosting Dish';
 
 interface GenshinTalent {
 	name: string;
@@ -268,7 +287,16 @@ interface Resources {
 	};
 	'materials/talent-book': {
 		type: 'materials/talent-book';
-		key: 'freedom' | 'resistance' | 'ballad' | 'prosperity' | 'diligence' | 'gold' | 'transience' | 'elegance' | 'light';
+		key:
+			| 'freedom'
+			| 'resistance'
+			| 'ballad'
+			| 'prosperity'
+			| 'diligence'
+			| 'gold'
+			| 'transience'
+			| 'elegance'
+			| 'light';
 		data: {
 			characters: Array<string>;
 			availability: Array<string>;
@@ -347,7 +375,7 @@ interface Resources {
 function create_resource<T extends keyof Resources, Encode extends boolean>(type: T, encode: Encode) {
 	return {
 		type,
-		encode
+		encode,
 	} as Resources[T] & {
 		type: T;
 		encode: typeof encode;
@@ -375,5 +403,5 @@ export const resources = {
 	weapon_ascension: create_resource('materials/weapon-ascension', false),
 	weapon_experience: create_resource('materials/weapon-experience', false),
 	nations: create_resource('nations', true),
-	weapons: create_resource('weapons', true)
+	weapons: create_resource('weapons', true),
 };

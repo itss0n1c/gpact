@@ -1,18 +1,18 @@
-declare type GenshinTypeEntity<T> = {
+type GenshinTypeEntity<T> = {
     id: string;
 } & {
     [key in keyof T]: T[key];
 };
-declare type GenshinVisionName = 'Anemo' | 'Cryo' | 'Electro' | 'Geo' | 'Hydro' | 'Pyro' | 'Dendro';
-declare type GenshinVisionKey = 'ANEMO' | 'CRYO' | 'ELECTRO' | 'GEO' | 'HYDRO' | 'PYRO' | 'DENDRO';
-declare type GenshinWeaponName = 'Claymore' | 'Polearm' | 'Sword' | 'Bow' | 'Catalyst';
-declare type GenshinWeaponKey = 'CLAYMORE' | 'POLEARM' | 'SWORD' | 'BOW' | 'CATALYST';
-declare type GenshinNationName = 'Mondstadt' | 'Unknown' | 'Inazuma' | 'Liyue' | 'Sumeru' | 'Snezhnaya' | 'Outlander';
-declare type GenshinArchonName = 'Baal' | 'Morax' | 'Barbatos';
-declare type GenshinControlledEntityName = 'Inazuma Bakufu' | 'Liyue Qixing' | 'Knights of Favonius';
-declare type GenshinWeaponSubStat = 'ATK' | 'Attack' | 'Elemental Mastery' | '-' | 'Physical DMG Bonus' | 'HP' | 'CRIT DMG' | 'DEF' | 'CRIT Rate' | 'Energy Recharge';
-declare type GenshinWeaponAscensionType = 'distantant-sea' | 'dandelion' | 'aerosiderite' | 'decarabian' | 'guyun' | 'elixir' | 'boreal' | 'mask' | 'narukami';
-declare type GenshinFoodType = 'ATK-Boosting Dish' | 'Recovery Dish' | 'Adventurer\'s Dish' | 'DEF-Boosting Dish';
+type GenshinVisionName = 'Anemo' | 'Cryo' | 'Electro' | 'Geo' | 'Hydro' | 'Pyro' | 'Dendro';
+type GenshinVisionKey = 'ANEMO' | 'CRYO' | 'ELECTRO' | 'GEO' | 'HYDRO' | 'PYRO' | 'DENDRO';
+type GenshinWeaponName = 'Claymore' | 'Polearm' | 'Sword' | 'Bow' | 'Catalyst';
+type GenshinWeaponKey = 'CLAYMORE' | 'POLEARM' | 'SWORD' | 'BOW' | 'CATALYST';
+type GenshinNationName = 'Mondstadt' | 'Unknown' | 'Inazuma' | 'Liyue' | 'Sumeru' | 'Snezhnaya' | 'Outlander';
+type GenshinArchonName = 'Baal' | 'Morax' | 'Barbatos';
+type GenshinControlledEntityName = 'Inazuma Bakufu' | 'Liyue Qixing' | 'Knights of Favonius';
+type GenshinWeaponSubStat = 'ATK' | 'Attack' | 'Elemental Mastery' | '-' | 'Physical DMG Bonus' | 'HP' | 'CRIT DMG' | 'DEF' | 'CRIT Rate' | 'Energy Recharge';
+type GenshinWeaponAscensionType = 'distantant-sea' | 'dandelion' | 'aerosiderite' | 'decarabian' | 'guyun' | 'elixir' | 'boreal' | 'mask' | 'narukami';
+type GenshinFoodType = 'ATK-Boosting Dish' | 'Recovery Dish' | "Adventurer's Dish" | 'DEF-Boosting Dish';
 interface GenshinTalent {
     name: string;
     unlock: string;
@@ -27,10 +27,10 @@ export interface GenshinSkillTalent extends GenshinTalent {
 export interface GenshinPassiveTalent extends GenshinTalent {
     level?: number;
 }
-export declare type GenshinConstellation = Omit<GenshinTalent, 'level'> & {
+export type GenshinConstellation = Omit<GenshinTalent, 'level'> & {
     level: 1 | 2 | 3 | 4 | 5 | 6;
 };
-export declare type GenshinAscension = Record<'silter' | 'fragment' | 'chunk' | 'gemstone', {
+export type GenshinAscension = Record<'silter' | 'fragment' | 'chunk' | 'gemstone', {
     id: string;
     name: string;
     sources: Array<string>;
