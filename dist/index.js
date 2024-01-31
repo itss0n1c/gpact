@@ -6571,7 +6571,8 @@ async function request2(path, queries = {}, options = {}, retry_count = 0) {
   try {
     res = await fetch(url.toString(), {
       ...options,
-      signal: signal.signal
+      signal: signal.signal,
+      ..."bun" in process.versions ? { headers: { ...options.headers, "Accept-Encoding": "gzip" } } : {}
     });
   } catch (e2) {
     clearTimeout(timeout);

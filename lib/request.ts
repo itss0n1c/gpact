@@ -26,6 +26,7 @@ async function request(
 		res = await fetch(url.toString(), {
 			...options,
 			signal: signal.signal,
+			...('bun' in process.versions ? { headers: { ...options.headers, 'Accept-Encoding': 'gzip' } } : {}),
 		});
 	} catch (e) {
 		clearTimeout(timeout);
