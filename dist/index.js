@@ -6559,7 +6559,7 @@ async function fetch(url, options_) {
 // lib/request.ts
 async function request2(path, queries = {}, options = {}, retry_count = 0) {
   if (!api_url) {
-    throw new Error("GENSHIN_API_BASE_URL is not set");
+    throw new Error("GPACT_API_URL is not set");
   }
   const signal = new import_abort_controller.AbortController;
   const timeout = setTimeout(() => signal.abort(), 5000);
@@ -6589,7 +6589,7 @@ async function json(path, queries = {}, options = {}) {
   const res = await request2(path, queries, options);
   return res.json();
 }
-var api_url = process.env.GENSHIN_API_BASE_URL;
+var api_url = process.env.GPACT_API_URL;
 
 // lib/resources.ts
 var create_resource = function(type, encode) {
