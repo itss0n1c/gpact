@@ -1,7 +1,7 @@
 import { AbortController } from 'abort-controller';
 import fetch, { RequestInit, Response } from 'node-fetch';
 
-export const api_url = process.env.GENSHIN_API_BASE_URL;
+export const api_url = process.env.GPACT_API_URL;
 
 async function request(
 	path: string,
@@ -10,7 +10,7 @@ async function request(
 	retry_count = 0,
 ): Promise<Response> {
 	if (!api_url) {
-		throw new Error('GENSHIN_API_BASE_URL is not set');
+		throw new Error('GPACT_API_URL is not set');
 	}
 
 	const signal = new AbortController();
