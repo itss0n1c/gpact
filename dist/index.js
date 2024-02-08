@@ -1,11 +1,11 @@
 // lib/request.ts
 async function request(path, queries = {}, options = {}, retry_count = 0) {
-  if (!api_url) {
+  if (!api_url()) {
     throw new Error("GPACT_API_URL is not set");
   }
   const signal = new AbortController;
   const timeout = setTimeout(() => signal.abort(), 5000);
-  const url = new URL(path, api_url);
+  const url = new URL(path, api_url());
   for (const [key, value] of Object.entries(queries)) {
     url.searchParams.append(key, value.toString());
   }
@@ -31,7 +31,7 @@ async function json(path, queries = {}, options = {}) {
   const res = await request(path, queries, options);
   return res.json();
 }
-var api_url = import.meta.env.GPACT_API_URL;
+var api_url = () => import.meta.env.GPACT_API_URL;
 
 // lib/resources.ts
 var create_resource = function(type, encode) {
@@ -96,7 +96,7 @@ var create_endpoint = function(resource_type) {
     },
     images: async (id) => {
       const ids = await json(join(type, id, "list"));
-      return ids.map((i) => new URL(join(type, id, i), api_url).toString());
+      return ids.map((i) => new URL(join(type, id, i), api_url()).toString());
     }
   };
   return methods;

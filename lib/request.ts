@@ -1,4 +1,4 @@
-export const api_url = import.meta.env.GPACT_API_URL;
+export const api_url = () => import.meta.env.GPACT_API_URL;
 
 async function request(
 	path: string,
@@ -6,14 +6,14 @@ async function request(
 	options: RequestInit = {},
 	retry_count = 0,
 ): Promise<Response> {
-	if (!api_url) {
+	if (!api_url()) {
 		throw new Error('GPACT_API_URL is not set');
 	}
 
 	const signal = new AbortController();
 	const timeout = setTimeout(() => signal.abort(), 5000);
 
-	const url = new URL(path, api_url);
+	const url = new URL(path, api_url());
 	for (const [key, value] of Object.entries(queries)) {
 		url.searchParams.append(key, (value as string).toString());
 	}

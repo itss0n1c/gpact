@@ -48,7 +48,7 @@ function create_endpoint<
 		},
 		images: async (id) => {
 			const ids = await json<string[]>(join(type, id, 'list'));
-			return ids.map((i) => new URL(join(type, id, i), api_url).toString());
+			return ids.map((i) => new URL(join(type, id, i), api_url()).toString());
 		},
 	};
 
