@@ -31,7 +31,7 @@ async function json(path, queries = {}, options = {}) {
   const res = await request(path, queries, options);
   return res.json();
 }
-var api_url = process.env.GPACT_API_URL;
+var api_url = import.meta.env.GPACT_API_URL;
 
 // lib/resources.ts
 var create_resource = function(type, encode) {
