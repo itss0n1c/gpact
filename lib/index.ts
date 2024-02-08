@@ -1,4 +1,4 @@
-import { api_url, json } from './request.js';
+import { api_url as _api_url, json } from './request.js';
 import { resources } from './resources.js';
 
 const join = (...args: string[]) => args.join('/');
@@ -48,7 +48,7 @@ function create_endpoint<
 		},
 		images: async (id) => {
 			const ids = await json<string[]>(join(type, id, 'list'));
-			return ids.map((i) => new URL(join(type, id, i), api_url()).toString());
+			return ids.map((i) => new URL(join(type, id, i), _api_url()).toString());
 		},
 	};
 
@@ -75,4 +75,4 @@ export const weapon_ascension = create_endpoint('weapon_ascension');
 export const weapon_experience = create_endpoint('weapon_experience');
 export const nations = create_endpoint('nations');
 export const weapons = create_endpoint('weapons');
-export { api_url };
+export const api_url = _api_url;

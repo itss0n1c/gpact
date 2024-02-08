@@ -122,6 +122,7 @@ var weapon_ascension = create_endpoint("weapon_ascension");
 var weapon_experience = create_endpoint("weapon_experience");
 var nations = create_endpoint("nations");
 var weapons = create_endpoint("weapons");
+var api_url2 = api_url;
 export {
   weapons,
   weapon_experience,
@@ -143,5 +144,5 @@ export {
   boss_materials,
   boss,
   artifacts,
-  api_url
+  api_url2 as api_url
 };
