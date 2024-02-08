@@ -1,6 +1,7 @@
-import { join } from 'path';
 import { api_url, json } from './request.js';
 import { resources } from './resources.js';
+
+const join = (...args: string[]) => args.join('/');
 
 interface GenshinEndpoint<T extends keyof typeof resources> {
 	get all(): Promise<

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 rm -rf dist &&
-bun build --target=node lib/index.ts --outdir dist &&
+bun build --target=browser lib/index.ts --outdir dist &&
 tsc -p .

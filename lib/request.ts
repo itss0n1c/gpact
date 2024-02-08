@@ -1,6 +1,3 @@
-import { AbortController } from 'abort-controller';
-import fetch, { RequestInit, Response } from 'node-fetch';
-
 export const api_url = process.env.GPACT_API_URL;
 
 async function request(
@@ -26,7 +23,6 @@ async function request(
 		res = await fetch(url.toString(), {
 			...options,
 			signal: signal.signal,
-			...('bun' in process.versions ? { headers: { ...options.headers, 'Accept-Encoding': 'gzip' } } : {}),
 		});
 	} catch (e) {
 		clearTimeout(timeout);
