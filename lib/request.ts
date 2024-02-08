@@ -1,4 +1,4 @@
-export const api_url = () => import.meta.env.GPACT_API_URL;
+export const api_url = () => (globalThis as any).GPACT_API_URL ?? import.meta.env.GPACT_API_URL;
 
 async function request(
 	path: string,

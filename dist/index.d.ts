@@ -24,5 +24,5 @@ export declare const weapon_ascension: GenshinEndpoint<"weapon_ascension">;
 export declare const weapon_experience: GenshinEndpoint<"weapon_experience">;
 export declare const nations: GenshinEndpoint<"nations">;
 export declare const weapons: GenshinEndpoint<"weapons">;
-export declare const api_url: () => string | undefined;
+export declare const api_url: () => any;
 export {};
