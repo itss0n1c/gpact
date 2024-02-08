@@ -75,3 +75,4 @@ export const weapon_ascension = create_endpoint('weapon_ascension');
 export const weapon_experience = create_endpoint('weapon_experience');
 export const nations = create_endpoint('nations');
 export const weapons = create_endpoint('weapons');
+export { api_url };

@@ -1,3 +1,4 @@
+import { api_url } from './request.js';
 import { resources } from './resources.js';
 interface GenshinEndpoint<T extends keyof typeof resources> {
     get all(): Promise<(typeof resources)[T]['encode'] extends true ? (typeof resources)[T]['data'][] : (typeof resources)[T]['data']>;
@@ -24,4 +25,4 @@ export declare const weapon_ascension: GenshinEndpoint<"weapon_ascension">;
 export declare const weapon_experience: GenshinEndpoint<"weapon_experience">;
 export declare const nations: GenshinEndpoint<"nations">;
 export declare const weapons: GenshinEndpoint<"weapons">;
-export {};
+export { api_url };

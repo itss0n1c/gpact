@@ -142,5 +142,6 @@ export {
   character_ascension,
   boss_materials,
   boss,
-  artifacts
+  artifacts,
+  api_url
 };
