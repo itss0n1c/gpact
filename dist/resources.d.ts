@@ -81,9 +81,11 @@ export declare const resources: {
             title: string;
             vision: GenshinVisionName;
             weapon: GenshinWeaponName;
+            gender: 'Male' | 'Female';
             nation: GenshinNationName;
             affiliation: string;
             rarity: number;
+            release: `${number}-${number}-${number}`;
             constellation: string;
             birthday: `${number}-${number}-${number}`;
             description: string;
